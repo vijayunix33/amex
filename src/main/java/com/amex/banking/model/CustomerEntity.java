@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
-import com.amex.banking.enumeration.customerEnum;
+import com.amex.banking.enumeration.CustomerEnum;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
@@ -25,7 +25,7 @@ public class CustomerEntity {
 	private String cust_Name;
 	@Column(unique = true)
 	private int cust_account_no;
-	private customerEnum cust_enum;
+	private CustomerEnum cust_enum;
 
 	private double balance;
 	private String comments;
@@ -41,7 +41,7 @@ public class CustomerEntity {
 
 
 
-	public CustomerEntity(int cust_id, String cust_Name, int cust_account_no, customerEnum cust_enum, double balance,
+	public CustomerEntity(int cust_id, String cust_Name, int cust_account_no, CustomerEnum cust_enum, double balance,
 			String comments) {
 		super();
 		this.cust_id = cust_id;
@@ -94,7 +94,7 @@ public class CustomerEntity {
 
 
 
-	public customerEnum getCust_enum() {
+	public CustomerEnum getCust_enum() {
 		return cust_enum;
 	}
 
@@ -102,7 +102,7 @@ public class CustomerEntity {
 
 
 
-	public void setCust_enum(customerEnum cust_enum) {
+	public void setCust_enum(CustomerEnum cust_enum) {
 		this.cust_enum = cust_enum;
 	}
 

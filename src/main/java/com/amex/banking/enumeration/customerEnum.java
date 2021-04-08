@@ -1,6 +1,6 @@
 package com.amex.banking.enumeration;
 
-public enum customerEnum {
-	Savings(),
+public enum CustomerEnum {
+	Savings,
     Current
 }

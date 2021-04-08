@@ -1,6 +1,5 @@
 package com.amex.banking;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,25 +9,27 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.amex.banking.enumeration.customerEnum;
+import com.amex.banking.enumeration.CustomerEnum;
 import com.amex.banking.model.CustomerEntity;
 import com.amex.banking.model.TransactionEntity;
 import com.amex.banking.repository.CustomerRepository;
 
 
 @SpringBootApplication
-public class AmexRestApplication {
+public class AmexApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AmexRestApplication.class, args);
+		SpringApplication.run(AmexApplication.class, args);
 	}
 	
 	
 	@Bean
 	CommandLineRunner runner(CustomerRepository repository) {
 		return args -> {
+			
+			//adding sample data into db on startup of the application.
 		
-			CustomerEntity ce1 = new CustomerEntity(101,"vijay", 1234,customerEnum.Savings, 2003.34, "Vijay account details");
+			CustomerEntity ce1 = new CustomerEntity(101,"vijay", 1234,CustomerEnum.Savings, 2003.34, "Vijay account details");
 			
 			
 			TransactionEntity te1 = new TransactionEntity("T1", LocalDate.now().minusDays(25),  "Shopped using amex card", 200.02);
@@ -37,7 +38,7 @@ public class AmexRestApplication {
 			TransactionEntity te2 = new TransactionEntity("T2", LocalDate.now(),  "Shopped using amex card", 200.02);
 			te2.setCust(ce1);
 		
-			CustomerEntity ce2 = new CustomerEntity(102,"ravi", 1235,customerEnum.Current, 2003.34, "ravi account details");
+			CustomerEntity ce2 = new CustomerEntity(102,"ravi", 1235,CustomerEnum.Current, 2003.34, "ravi account details");
 			
 			TransactionEntity te3 = new TransactionEntity("T3", LocalDate.now(),  "Shopped using amex card", 200.02);
 			te3.setCust(ce2);
