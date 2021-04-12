@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amex.banking.dto.CustomerTransactionDTO;
 import com.amex.banking.model.CustomerEntity;
 import com.amex.banking.model.TransactionEntity;
 import com.amex.banking.service.CustomerService;
@@ -50,13 +51,15 @@ public class CustomerController {
 	
 	
 	@GetMapping("/getCustomers")
-	public ResponseEntity<List<CustomerEntity>> getCustomerDetails(@RequestParam("custId") int custId, @RequestParam("accountNo") int accountNo) {
-		List<CustomerEntity> customerEntity = null;
-		 customerEntity= customerService.getCustomerDetailsByFilter(custId, accountNo);
-		if(customerEntity.isEmpty())
-		    return new ResponseEntity<List<CustomerEntity>>(customerEntity, HttpStatus.NO_CONTENT);
+	public ResponseEntity<List<CustomerTransactionDTO>> getCustomerDetails(@RequestParam(value = "custId", required=false) int custId, @RequestParam(value = "accountNo", required=false) int accountNo,
+			@RequestParam(value = "startDate", required=false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fromDate, @RequestParam(value= "toDate", required=false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate toDate, 
+			@RequestParam(value= "dateFilter", required=false)  Boolean dateFilter) {
+		List<CustomerTransactionDTO> customerEntity = null;
+		 customerEntity= customerService.getCustomerDetailsByFilter(custId, accountNo, fromDate, toDate, dateFilter);
+		if(customerEntity.isEmpty()) 
+		    return new ResponseEntity<List<CustomerTransactionDTO>>(customerEntity, HttpStatus.NO_CONTENT);
 		else
-			return new ResponseEntity<List<CustomerEntity>>(customerEntity, HttpStatus.OK);
+			return new ResponseEntity<List<CustomerTransactionDTO>>(customerEntity, HttpStatus.OK);
 	}
 	
 	
@@ -66,7 +69,7 @@ public class CustomerController {
 	 * returns List<TransactionEntity>
 	 */
 	
-	@GetMapping("/getDataBetweendates")
+	/*@GetMapping("/getDataBetweendates")
 	public ResponseEntity<List<TransactionEntity>> getTransactionDetailsByDates(@RequestParam("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fromDate, @RequestParam("toDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate toDate) {
 		List<TransactionEntity> transactionEntity = null;
 		transactionEntity= customerService.getTransactionDetailsByDates(fromDate, toDate);
@@ -74,7 +77,7 @@ public class CustomerController {
 		    return new ResponseEntity<List<TransactionEntity>>(transactionEntity, HttpStatus.NO_CONTENT);
 		else
 			return new ResponseEntity<List<TransactionEntity>>(transactionEntity, HttpStatus.OK);
-	}
+	}*/
 	
 	
 

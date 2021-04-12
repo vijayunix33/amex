@@ -31,7 +31,7 @@ public class AmexApplication {
 		
 			CustomerEntity ce1 = new CustomerEntity(101,"vijay", 1234,CustomerEnum.Savings, 2003.34, "Vijay account details");
 			
-			
+			 
 			TransactionEntity te1 = new TransactionEntity("T1", LocalDate.now().minusDays(25),  "Shopped using amex card", 200.02);
 			te1.setCust(ce1);
 			
@@ -43,20 +43,42 @@ public class AmexApplication {
 			TransactionEntity te3 = new TransactionEntity("T3", LocalDate.now(),  "Shopped using amex card", 200.02);
 			te3.setCust(ce2);
 			
+			
+            CustomerEntity ce3 = new CustomerEntity(103,"vinoth", 1236,CustomerEnum.Current, 20030.34, "vinoth account details");
+			
+			TransactionEntity te4 = new TransactionEntity("T4", LocalDate.now().minusDays(30),  "Shopped using amex card", 3000.02);
+			te4.setCust(ce3);
+			
+			TransactionEntity te5 = new TransactionEntity("T5", LocalDate.now().minusDays(6),  "Shopped using amex card", 4000.02);
+			te5.setCust(ce3);
+			
+			TransactionEntity te6 = new TransactionEntity("T6", LocalDate.now().minusDays(15),  "Shopped using amex card", 5000.02);
+			te6.setCust(ce3);
+			
 			List<TransactionEntity> transList =  new ArrayList<TransactionEntity>();
 			transList.add(te1);
 			transList.add(te2);
 			
+		
+			
 			List<TransactionEntity> transList1 =  new ArrayList<TransactionEntity>();
 			transList1.add(te3);
 			
+			List<TransactionEntity> transList2 =  new ArrayList<TransactionEntity>();
+			transList2.add(te4);
+			transList2.add(te5);
+			transList2.add(te6);
 			
 			
-			ce1.setTrans(transList);
-			ce2.setTrans(transList1);
+			
+			
+			ce1.setTransactions(transList);
+			ce2.setTransactions(transList1);
+			ce3.setTransactions(transList2);
 			
 			repository.save(ce1);
 			repository.save(ce2);
+			repository.save(ce3);
 			
 			
 			
