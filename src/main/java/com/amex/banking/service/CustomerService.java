@@ -106,25 +106,6 @@ public class CustomerService {
 		}
 		
     }
-
-
-
-	/*public List<TransactionEntity> getTransactionDetailsByDates(LocalDate startDate, LocalDate endDate) {
-		List<TransactionEntity> list = new ArrayList<TransactionEntity>();
-		List<TransactionEntity> transList = transactionRepository.getTransactionDetailsByDates(startDate, endDate);
-		transList.forEach(e -> {
-			TransactionEntity te = new TransactionEntity();
-			te.setCust_Name(e.getCust().getCust_Name());
-			te.setTrans_date(e.getTrans_date());
-			te.setTrans_process(e.getTrans_process());
-			te.setTrans_reason(e.getTrans_reason());
-			te.setTrans_ref_no(e.getTrans_ref_no());
-			list.add(te);
-			
-		});
-		System.out.println("list---->"+list.toString());
-		return list;
-	}*/
 	
 
 }

@@ -61,24 +61,7 @@ public class CustomerController {
 		else
 			return new ResponseEntity<List<CustomerTransactionDTO>>(customerEntity, HttpStatus.OK);
 	}
-	
-	
-	/*
-	 * This service retrieves all the Transactions based on the start date and end date from the database.
-	 * @param startDate, toDate
-	 * returns List<TransactionEntity>
-	 */
-	
-	/*@GetMapping("/getDataBetweendates")
-	public ResponseEntity<List<TransactionEntity>> getTransactionDetailsByDates(@RequestParam("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fromDate, @RequestParam("toDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate toDate) {
-		List<TransactionEntity> transactionEntity = null;
-		transactionEntity= customerService.getTransactionDetailsByDates(fromDate, toDate);
-		if(transactionEntity.isEmpty())
-		    return new ResponseEntity<List<TransactionEntity>>(transactionEntity, HttpStatus.NO_CONTENT);
-		else
-			return new ResponseEntity<List<TransactionEntity>>(transactionEntity, HttpStatus.OK);
-	}*/
-	
+
 	
 
 }
